@@ -5,6 +5,10 @@
 [log]
     level = "DEBUG"
 
+[api]
+  dashboard = true
+  insecure = true # listen to 8080
+
 [entryPoints.web]
     address = ":80"
 
