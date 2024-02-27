@@ -1,0 +1,18 @@
+[providers]
+    [providers.file]
+        filename = "/var/snap/traefik/common/dynamic.toml"
+
+[log]
+    level = "DEBUG"
+
+[entryPoints.web]
+    address = ":80"
+
+    [entryPoints.web.http]
+        [entryPoints.web.http.redirections]
+            [entryPoints.web.http.redirections.entryPoint]
+                to = "websecure"
+                scheme = "https"
+
+[entryPoints.websecure]
+    address = ":443"

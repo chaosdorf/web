@@ -1,0 +1,27 @@
+  - hosts: web.chaosdorf.de
+    tasks:
+      - name: install traefik itself
+        community.general.snap:
+          name: traefik
+          state: present
+          channel: latest/stable
+      - name: update the static configuration
+        ansible.builtin.copy:
+          src: ../traefik/static.toml
+          dest: /var/snap/traefik/common/traefik.toml
+          owner: root
+          mode: 0644
+        become: true
+        notify:
+          - Restart traefik
+      - name: update the dynamic configuration
+        ansible.builtin.copy:
+          src: ../traefik/dynamic.toml
+          dest: /var/snap/traefik/common/dynamic.toml
+          owner: root
+          mode: 0644
+        become: true
+        # traefik automatically re-evaluates the dynamic configuration
+    handlers:
+      - name: Restart traefik
+        ansible.builtin.command: snap restart traefik
