@@ -1,6 +1,6 @@
 [providers]
     [providers.file]
-        filename = "/var/snap/traefik/common/dynamic.toml"
+        directory = "/var/snap/traefik/common/dynamic/"
 
 [log]
     level = "DEBUG"

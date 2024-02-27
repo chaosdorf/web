@@ -1,0 +1,10 @@
+[http.routers]
+    [http.routers.chaosdorf-de]
+        rule = "Host(`chaosdorf.de`)"
+        service = "chaosdorf-de"
+        [http.routers.chaosdorf-de.tls]
+
+[http.services]
+    [http.services.chaosdorf-de.loadBalancer]
+        [[http.services.chaosdorf-de.loadBalancer.servers]]
+            url = "http://extern.chaosdorf.internal/"

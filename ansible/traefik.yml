@@ -16,8 +16,8 @@
           - Restart traefik
       - name: update the dynamic configuration
         ansible.builtin.copy:
-          src: ../traefik/dynamic.toml
-          dest: /var/snap/traefik/common/dynamic.toml
+          src: ../traefik/dynamic
+          dest: /var/snap/traefik/common/
           owner: root
           mode: 0644
         become: true
